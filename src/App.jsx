@@ -5,7 +5,7 @@ export default function App() {
   const clientRef = useRef(null);
 
   useEffect(() => {
-    const client = mqtt.connect('wss://test.mosquitto.org:1883');
+    const client = mqtt.connect('wss://test.mosquitto.org:8081');
 
     client.on('connect', () => {
       console.log('Conectado ao broker MQTT');
@@ -25,7 +25,7 @@ export default function App() {
 
   const enviarMensagem = () => {
     if (clientRef.current?.connected) {
-      clientRef.current.publish('teste/topico', 'xx');    
+      clientRef.current.publish('teste/topico', 'yey');
     } else {
       alert('Cliente MQTT não conectado.');
     }
@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>MQTT com React</h1>
+      <h1>MQTT com Reacteee</h1>
       <button onClick={enviarMensagem}>Enviar mensagem</button>
     </div>
   );
