@@ -52,7 +52,7 @@ function SmokeParticles({ count = 1000 }) {
       <bufferGeometry attach="geometry" />
       <pointsMaterial
         size={0.3}
-        color="rgb(216, 102, 8)"
+        color="rgb(213, 165, 33)"
         transparent
         opacity={0.3}
         depthWrite={false}
@@ -65,7 +65,7 @@ function SmokeParticles({ count = 1000 }) {
 
 export default function App() {
   const clientRef = useRef(null)
-  const [bgColor, setBgColor] = useState('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.20),rgba(255, 128, 0, 0.20),rgba(255, 255, 0, 0.20), transparent)')
+  const [bgColor, setBgColor] = useState('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.2),rgba(255, 128, 0, 0.2),rgba(255, 255, 0, 0.20), transparent)')
   const [isLigado, setIsLigado] = useState(false)
   const [fazerSurgir, setIsfazerSurgir] = useState('None')
   const topico = 'peteletrica/topico'
@@ -99,7 +99,7 @@ export default function App() {
     } else if (clientRef.current?.connected && !isLigado) {
       // Se o cliente estiver conectado e já estiver ligado, publica a mensagem de desligado
       clientRef.current.publish(topico, 'on')
-      setBgColor('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.05),rgba(255, 128, 0, 0.2),rgba(255, 255, 0, 0.14), transparent)') 
+      setBgColor('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.2),rgba(255, 128, 0, 0.2),rgba(255, 255, 0, 0.2), transparent)') 
       setIsLigado(true)
       setIsfazerSurgir('block')
     } else {
