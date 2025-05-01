@@ -1,0 +1,79 @@
+{
+  "hash": "8d238cea",
+  "configHash": "ac4422ca",
+  "lockfileHash": "a3a18239",
+  "browserHash": "4f3e7b13",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "ffe01733",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "9a373cc7",
+      "needsInterop": true
+    },
+    "three": {
+      "src": "../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "90057fad",
+      "needsInterop": false
+    },
+    "three-stdlib": {
+      "src": "../../node_modules/three-stdlib/index.js",
+      "file": "three-stdlib.js",
+      "fileHash": "ed60b94f",
+      "needsInterop": false
+    },
+    "@react-three/fiber": {
+      "src": "../../node_modules/@react-three/fiber/dist/react-three-fiber.esm.js",
+      "file": "@react-three_fiber.js",
+      "fileHash": "06854f83",
+      "needsInterop": false
+    },
+    "@react-three/drei": {
+      "src": "../../node_modules/@react-three/drei/index.js",
+      "file": "@react-three_drei.js",
+      "fileHash": "99767ef7",
+      "needsInterop": false
+    },
+    "mqtt": {
+      "src": "../../node_modules/mqtt/dist/mqtt.esm.js",
+      "file": "mqtt.js",
+      "fileHash": "501bcb9a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "vision_bundle-2HK4YBBZ": {
+      "file": "vision_bundle-2HK4YBBZ.js"
+    },
+    "chunk-BWHTGIJP": {
+      "file": "chunk-BWHTGIJP.js"
+    },
+    "chunk-B3XFY4DK": {
+      "file": "chunk-B3XFY4DK.js"
+    },
+    "chunk-HKVO7JFP": {
+      "file": "chunk-HKVO7JFP.js"
+    },
+    "chunk-Z4L4S4OG": {
+      "file": "chunk-Z4L4S4OG.js"
+    },
+    "chunk-7KZCUJ25": {
+      "file": "chunk-7KZCUJ25.js"
+    },
+    "hls-ZIFATFMO": {
+      "file": "hls-ZIFATFMO.js"
+    },
+    "chunk-Y5A7JFWI": {
+      "file": "chunk-Y5A7JFWI.js"
+    },
+    "chunk-WOOG5QLI": {
+      "file": "chunk-WOOG5QLI.js"
+    }
+  }
+}

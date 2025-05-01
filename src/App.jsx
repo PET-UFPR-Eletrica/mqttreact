@@ -130,7 +130,7 @@ export default function App() {
         }}
       >
         <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', pointerEvents: 'auto' }}>
-          MQTT com React
+          Uso do MQTT
         </h1>
         <button
           style={{
@@ -146,11 +146,11 @@ export default function App() {
           }}
           onClick={enviarMensagem}
         >
-          Enviar mensagem
+          Ligar/Desligar
         </button>
         
         <p style={{ fontSize: '1.2rem', position: 'absolute', top: '90%', pointerEvents: 'auto',  display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <img style={{filter: 'invert(90%) brightness(180%)'}} src="public\pet_azul.png" alt="Girl in a jacket"  height="50"/>
+        <img style={{filter: 'invert(90%) brightness(180%)'}} src="/pet_azul.png" alt="Pet elétrica"  height="50"/>
         </p>
       </div>
       {/* Fundo com cor dinâmica */}
