@@ -17,8 +17,8 @@ function SmokeParticles({ count = 1000 }) {
         Math.random() - 2,
         (Math.random() - 0.5) * 2
       ),
-      velocity: Math.random() * 0.01 + 0.005,
-      sway: Math.random() * 0.02 - 0.01,
+      velocity: Math.random() * 0.01 + 0.00,
+      sway: Math.random() * 0.02 - 0.001,
     }))
 
     const positions = new Float32Array(count * 3)
@@ -65,10 +65,13 @@ function SmokeParticles({ count = 1000 }) {
 
 export default function App() {
   const clientRef = useRef(null)
-  const [bgColor, setBgColor] = useState('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.27),rgba(255, 128, 0, 0.36),rgba(255, 255, 0, 0.37), transparent)')
+  const [bgColor, setBgColor] = useState('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.20),rgba(255, 128, 0, 0.20),rgba(255, 255, 0, 0.20), transparent)')
   const [isLigado, setIsLigado] = useState(false)
+  const [fazerSurgir, setIsfazerSurgir] = useState('None')
+  const topico = 'peteletrica/topico'
+  const broker = 'wss://test.mosquitto.org'
   useEffect(() => {
-    const client = mqtt.connect('wss://test.mosquitto.org:8081')
+    const client = mqtt.connect(broker+':8081')
 
     client.on('connect', () => {
       console.log('Conectado ao broker MQTT')
@@ -87,16 +90,18 @@ export default function App() {
   }, [])
 
   const enviarMensagem = () => {
-    if (clientRef.current?.connected && !isLigado) {
+    if (clientRef.current?.connected && isLigado) {
       // Se o cliente estiver conectado e não estiver ligado, publica a mensagem
-      clientRef.current.publish('teste/topico', 'ligado')
-      setBgColor('linear-gradient(to top,rgba(0, 0, 0, 1),rgba(17, 18, 17, 0.99),rgba(6, 6, 6, 1), transparent)') 
-      setIsLigado(true)
-    } else if (clientRef.current?.connected && isLigado) {
-      // Se o cliente estiver conectado e já estiver ligado, publica a mensagem de desligado
-      clientRef.current.publish('teste/topico', 'desligado')
-      setBgColor('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.27),rgba(255, 128, 0, 0.36),rgba(255, 255, 0, 0.37), transparent)') 
+      clientRef.current.publish(topico, 'off')
+      setBgColor('linear-gradient(to top,rgba(0, 0, 0, 1),rgba(33, 37, 33, 0.95),rgba(39, 21, 21, 0.72), transparent)') 
       setIsLigado(false)
+      setIsfazerSurgir('block')
+    } else if (clientRef.current?.connected && !isLigado) {
+      // Se o cliente estiver conectado e já estiver ligado, publica a mensagem de desligado
+      clientRef.current.publish(topico, 'on')
+      setBgColor('linear-gradient(to top,rgba(0, 0, 0, 0.08),rgba(255, 0, 0, 0.05),rgba(255, 128, 0, 0.2),rgba(255, 255, 0, 0.14), transparent)') 
+      setIsLigado(true)
+      setIsfazerSurgir('block')
     } else {
       // Se o cliente não estiver conectado, exibe um alerta
       alert('Cliente MQTT não conectado.')
@@ -146,11 +151,16 @@ export default function App() {
           }}
           onClick={enviarMensagem}
         >
-          Ligar/Desligar
+          {!isLigado ? 'Ligar' : 'Desligar'} 
         </button>
-        
-        <p style={{ fontSize: '1.2rem', position: 'absolute', top: '90%', pointerEvents: 'auto',  display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <img style={{filter: 'invert(90%) brightness(180%)'}} src="/pet_azul.png" alt="Pet elétrica"  height="50"/>
+        <p style={{ fontSize: '0.6rem', pointerEvents: 'auto', marginTop: '1rem', display: fazerSurgir}}>
+          Mensagens enviadas: {isLigado ? 'on' : 'off'} 
+          <br />
+          Dentro do tópico do MQTT: {topico}
+        </p>
+        <p style={{ fontSize: '0.2rem', position: 'absolute', top: '75%', pointerEvents: 'auto',  display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+         
+        <img style={{filter: 'invert(90%) brightness(180%)'}} src="https://pet-ufpr-eletrica.github.io/mqttreact/pet_azul.png" alt="Pet elétrica"  height="50"/>
         </p>
       </div>
       {/* Fundo com cor dinâmica */}
