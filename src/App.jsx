@@ -179,6 +179,7 @@ export default function App() {
           position: 'absolute', 
           bottom: '20px', 
           pointerEvents: 'auto',
+          transform: 'translateX(10px)'
         }}>
           <a href="https://www.instagram.com/pet_eletrica/" target="_blank" rel="noopener noreferrer">
             <img 
@@ -194,7 +195,7 @@ export default function App() {
       {/* Background */}
       <div style={{
         backdropFilter: 'blur(25px)',
-        WebkitBackdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(25px)',
         background: bgColor,
         position: 'absolute',
         top: 0,
